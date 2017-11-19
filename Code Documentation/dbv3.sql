@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2017 at 10:49 PM
+-- Generation Time: Nov 15, 2017 at 08:17 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 --By: Chung Ming Cheng
@@ -83,14 +83,32 @@ CREATE TABLE `project` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `queston`
+-- Table structure for table `question`
 --
 
-CREATE TABLE `queston` (
+CREATE TABLE `question` (
   `ID` varchar(45) NOT NULL,
   `Text` varchar(999) NOT NULL,
   `Type` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`ID`, `Text`, `Type`) VALUES
+('001', 'Student Experience - Project includes opportunities for student involvement and/or will positively impact the student experience.', 'review'),
+('002', 'Connection to Campus - Project directly addresses environmental sustainability on the WSU campus or in the capacity that on-campus activities directly influence environmental sustainability in the surrounding community.', 'review'),
+('003', 'Feasibility and Institutional Support - Project is feasible and has support from appropriate campus individuals and entities. Individual students or student organizations must have the signature of a faculty or staff advisor who is committed to advising throughout project implementation.', 'review'),
+('004', 'Appropriateness of Schedule and Budget Request - Project schedule and budget are reasonable and conform to established timelines, constraints and parameters.', 'review'),
+('005', 'Accountability - Project includes mechanism for evaluation and follow-up. At a minimum, a project plan includes appropriate progress reports to the Sustainability Committee based on the duration of the project and a final report within 60 days following completion of the project.', 'review'),
+('006', 'Innovation - Project is innovative in nature and does not include routine maintenance or code-compliant activities. Funding may support narrowing the gap between code-compliant and more sustainable alternatives.', 'review'),
+('007', 'Environmental Benefits - Project demonstrates a reduction in WSU\'s carbon footprint or provides other environmental benefits such as water conservation, storm water management, biodiversity conservation, and waste minimization.', 'review'),
+('008', 'Regional Connection - Project provides intellectual and emotional linkage with the unique landscape of the Driftless Area/ Mississippi River, as well as the cultural lifeways of this special place.', 'review'),
+('009', 'Outreach and Education - Project considers interdisciplinary and experiential education and outreach opportunities and has included them as part of its implementation plan.', 'review'),
+('010', 'Self Sufficiency - Project includes matching funds from sources beyond SGF or includes a plan for sustained funding.', 'review'),
+('011', 'Potential for Broad Application - Project has potential to be scalable across the campus.', 'review'),
+('012', ' Cost/Benefit Analysis (as appropriate) - Project proposal outlines project payback, lifecycle costs and savings, etc.', 'review');
 
 -- --------------------------------------------------------
 
@@ -121,6 +139,13 @@ CREATE TABLE `user` (
   `phone_primary` varchar(45) NOT NULL,
   `Status` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`ID`, `Name`, `Campus_affiliation`, `email`, `phone_primary`, `Status`) VALUES
+('00001', 'test', 'test', 'test@winona.edu', '0000000000', 'student');
 
 --
 -- Indexes for dumped tables
@@ -156,9 +181,9 @@ ALTER TABLE `project`
   ADD KEY `Advisor_Name` (`Advisor_Name`);
 
 --
--- Indexes for table `queston`
+-- Indexes for table `question`
 --
-ALTER TABLE `queston`
+ALTER TABLE `question`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -189,9 +214,9 @@ ALTER TABLE `admin`
 -- Constraints for table `answer`
 --
 ALTER TABLE `answer`
-  ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`Question_ID`) REFERENCES `queston` (`ID`),
   ADD CONSTRAINT `answer_ibfk_2` FOREIGN KEY (`User_ID`) REFERENCES `user` (`ID`),
-  ADD CONSTRAINT `answer_ibfk_3` FOREIGN KEY (`Project_ID`) REFERENCES `project` (`ID`);
+  ADD CONSTRAINT `answer_ibfk_3` FOREIGN KEY (`Project_ID`) REFERENCES `project` (`ID`),
+  ADD CONSTRAINT `answer_ibfk_4` FOREIGN KEY (`Question_ID`) REFERENCES `question` (`ID`);
 
 --
 -- Constraints for table `project`
