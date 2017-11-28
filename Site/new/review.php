@@ -10,7 +10,17 @@
   <body>
   <?php
 
-	$UID = $_POST["u_id"];
+	echo "<div><h1>"."This page would show the answers to the project and budget questions for the reviewer to, review"."</h1></div>";
+	
+	$UID = $_POST['id'];
+	$PID = $_POST['projnum'];
+	$Name = $_POST['name'];
+	$Status = $_POST['affil'];
+	$Phone = $_POST['phone'];
+	
+	
+	
+	/* $UID = $_POST["u_id"];
 	$PID = $_POST["p_id"];
 	
 	$servername = "localhost";
@@ -21,7 +31,7 @@
 	$conn = new mysqli("$servername", "$username", "$password", "$dbname");
 	
 	$get_review = "SELECT * FROM project WHERE project_id = '$PID'";
-	$get_project_answers = "SELECT * FROM answer WHERE project_id = '$PID' AND user_id = '$UID' AND `id` NOT IN (SELECT 'id' FROM 'question' WHERE type = 'budget' OR type = 'project')";
+	$get_project_answers = "SELECT * FROM answer WHERE project_id = '$PID' AND user_id = '$UID' AND `id` IN (SELECT 'id' FROM 'question' WHERE type = 'budget' OR type = 'project')";
 	
 				
 			$resultA = $conn->query($get_review);
@@ -37,11 +47,25 @@
 
 			foreach ($rowB as $row) {
 			echo "<p>answer: ".$rowB["answer"]." comments: ".$rowB["comment"]."</p><br>";			
-			};	
+			};	 */
 				
 	
 	
 	?>
+	<script>
+	function goBack() {
+		window.history.back();
+	}
+	</script>
+	<form action="questions.php" method="POST">
+			<input type="hidden" name="uid" value="<?= "$UID" ?>" readonly>
+			<input type="hidden" name="pid" value="<?= "$PID" ?>" readonly>
+			<input type="hidden" name="name" value="<?= "$Name" ?>" readonly>
+			<input type="hidden" name="affil" value="<?= "$Status" ?>" readonly>
+			<input type="hidden" name="phone" value="<?= "$Phone" ?>" readonly>
+			<input type="submit" value="Continue">
+	</form>
+	<button onclick="goBack()">Go Back</button>
 	Thank you
 	 </body>
 </html>

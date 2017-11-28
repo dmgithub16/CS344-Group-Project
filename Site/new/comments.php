@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Green Fee</title>
+    <title>Green Fee: Comments</title>
     <meta charset="utf-8">
     <meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
   </head>
   <body>
+  <div><h1>Let us know what comments you have about the project in general.</h1></div>
   <?php	
 	$UID = $_POST["u_id"];
 	$PID = $_POST["p_id"];
@@ -52,17 +53,18 @@
 	$conn->close(); 
 	?>
 		<div id="cmnts">
-	
-			
-		General Comments:<br>
-		
+		<script>
+		function goBack() {
+			window.history.back();
+		}
+		</script>
 		<form id="txtarea" action="submit.php" method="POST">
-			Reviewer Info: ID: <input name="u_id" value="<?= $UID ?>" readonly><br> 	
-			Project ID: <input name="p_id" value="<?= $PID ?>" readonly>
-			<br>
+			<input type="hidden" name="u_id" value="<?= $UID ?>" readonly><input type="hidden" name="p_id" value="<?= $PID ?>" readonly>
 			<textarea rows="7" cols="50" name="comment" form="txtarea"></textarea>
+			
 			<input type="submit" value="Submit">
 		</form>
+		<button onclick="goBack()">Go Back</button>
 	</div>
   </body>
 </html>

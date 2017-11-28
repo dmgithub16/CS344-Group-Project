@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Green Fee</title>
+    <title>Green Fee: Review Submission</title>
     <meta charset="utf-8">
 	<meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 	
   </head>
   <body>
+  <div><h1>Please check your answers and submit your review.</h1></div>
   <div id="review_answers">
   <?php
 	$G_Com = $_POST["comment"];
@@ -31,19 +32,28 @@
 				
 			$result = $conn->query($get_review);
 			$row = $result->fetch_assoc();			
-			
-			echo "<p> ID: ".$row["user_id"]."</p><br>";
-			echo "<p> Name: ".$row["r_name"]."</p><br>";
-			echo "<p> Affiliation: ".$row["affiliation"]."</p><br>";
-			echo "<p> Review Comment: ".$row["comments"]."</p><br>";
-			
+	?>
+			<div>
+			<p> ID: <?= $row["user_id"] ?></p><br>
+			<p> Name: <?= $row["r_name"] ?></p><br>
+			<p> Affiliation: <?= $row["affiliation"] ?></p><br>
+			<p> Review Comment: <?= $row["comments"] ?></p><br>
+			</div>
+	<?php			
 			$result = $conn->query($get_review_answers);
-			
 			while($row = $result->fetch_assoc()) {
-				echo "<p>".$row["answer"].",".$row["comment"]."</p>";
-			}
+	?>				
+			<p> <?= $row["answer"] ?> - <?= $row["comment"] ?> </p>
+	<?php
+			};
 	$conn->close(); 			
 	?>
+		<script>
+		function goBack() {
+			window.history.back();
+		}
+		</script>
+	<button onclick="goBack()">Go Back</button>
 	Thank you
 	 </body>
 </html>

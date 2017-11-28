@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Green Fee</title>
+    <title>Green Fee: Reviewer Info</title>
     <meta charset="utf-8">
 	<meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     
   </head>
   <body>
+  <div><h1>Review your info and select a project.</h1></div>
   <?php
   $UID = $_POST["username"];;
   $servername = "localhost";
@@ -21,7 +22,7 @@
   
 ?>
 	<div id="info">
-		<form action="questions.php" method="POST">
+		<form action="review.php" method="POST">
 			Please select a project to review:
 			<select name="projnum">
 				<?php
@@ -31,15 +32,16 @@
 					}	
 				?>
 			</select><br>
+			
 			<?php
 				$result = $conn->query($get_user_info_query);
 				$row = $result->fetch_assoc();			
 			?>
-			Reviewer Info:<br>
-			ID: <input name="id" value="<?= "$row[id]" ?>" readonly><br>
-			Name: <input name="name" value="<?= "$row[u_name]" ?>" readonly><br>
-			Affiliation: <input name="affil" value="<?= "$row[campus_affiliation]" ?>" readonly><br>
-			Phone: <input name="phone" value="<?= "$row[phone_primary]" ?>" readonly><br>
+			
+			<p>ID: <input name="id" value="<?= "$row[id]" ?>" readonly></p><br>
+			<p>Name: <input name="name" value="<?= "$row[u_name]" ?>" readonly></p><br>
+			<p>Affiliation: <input name="affil" value="<?= "$row[campus_affiliation]" ?>" readonly></p><br>
+			<p>Phone: <input name="phone" value="<?= "$row[phone_primary]" ?>" readonly></p><br>
 			<input type="submit" value="Continue">
 			
 			<?php 

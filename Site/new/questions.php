@@ -1,16 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Green Fee</title>
+    <title>Green Fee: Questions</title>
     <meta charset="utf-8">
     <meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
   </head>
   <body>
+  <div><h1>Please rate the project and comment.</h1></div>
   <?php
-	$UID = $_POST['id'];
-	$PID = $_POST['projnum'];
+	$UID = $_POST['uid'];
+	$PID = $_POST['pid'];
 	$Name = $_POST['name'];
 	$Status = $_POST['affil'];
 	$Phone = $_POST['phone'];
@@ -45,13 +46,12 @@
 	?>
 	<div id="qstns">
 		<form action="comments.php" method="POST">
-		Reviewer Info: ID: <input name="u_id" value="<?= $UID ?>" readonly><p>Name:<?= $Name?></p><br> 	
-		Project ID: <input name="p_id" value="<?= $PID ?>" readonly>
+		<input type="hidden" name="u_id" value="<?= $UID ?>" readonly><input type="hidden" name="p_id" value="<?= $PID ?>" readonly>
 	<?php		
 	$rows = $conn->query("SELECT * FROM question");
 	foreach ($rows as $row) {
 	?>
-	 
+
 			<input type="hidden" name='q<?= $row["id"] ?>' value='<?= $row["id"] ?>' readonly>
 			<p>Question <?= $row["id"] ?></p>
 			<?= $row["text"]  ?>
@@ -62,13 +62,19 @@
 			<input type="radio" name='res<?= $row["id"] ?>' value="fair1">
 			<input type="radio" name='res<?= $row["id"] ?>' value="min1">
 			<input type="radio" name='res<?= $row["id"] ?>' value="na1"><br>
-			<label>Comments: <input  style="height:200px;" type="text" name="com<?=$row["id"] ?>" value="Comments"></label><br>
+			<label>Comments: <input type="text" name="com<?=$row["id"] ?>" value="Comments"></label><br>
 			</div>
   <?php
 	};
 	$conn->close();
   ?>
-  <input type="submit" value="Continue">
-		</form>
+  	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+    <input type="submit" value="Continue">
+	</form>
+	<button onclick="goBack()">Go Back</button>
   </body>
 </html>
