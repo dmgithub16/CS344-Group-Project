@@ -8,7 +8,7 @@
 	
   </head>
   <body>
-  <div><h1>Let us know what comments you have about the project in general.</h1></div>
+  <div><h1>Let us know what comments you have about the project in general and submit your review.</h1></div>
   <?php	
 	$UID = $_POST["u_id"];
 	$PID = $_POST["p_id"];

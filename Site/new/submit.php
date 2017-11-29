@@ -8,7 +8,7 @@
 	
   </head>
   <body>
-  <div><h1>Please check your answers and submit your review.</h1></div>
+  <div><h1>Here is a review of your submission.</h1></div>
   <div id="review_answers">
   <?php
 	$G_Com = $_POST["comment"];
