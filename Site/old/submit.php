@@ -3,20 +3,12 @@
   <head>
     <title>Green Fee: Review Submission</title>
     <meta charset="utf-8">
-	<meta name="author" content="Chung Ming Cheng, Derek Morgan, Matthew Dill, Jordan Benson">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	<link rel="stylesheet" href="css\bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="css\style.css" type="text/css">
+	<meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	
   </head>
   <body>
-    <nav class= "col-2">
-  <img class="logo" src="images/logo.png" alt="A logo for the green fee" title="green fee logo" width="150" height ="195">
-  </nav>
-	<div class = "col-9" id="topmarg">
-	<h1> Winona State</h1>
-	<h5 class ="rev" > Green Fee Review </h5>
-	<hr>
-  <div><h2>Here is a review of your submission.</h2></div>
+  <div><h1>Please check your answers and submit your review.</h1></div>
   <div id="review_answers">
   <?php
 	$G_Com = $_POST["comment"];
@@ -41,12 +33,11 @@
 			$result = $conn->query($get_review);
 			$row = $result->fetch_assoc();			
 	?>
-		<div class="col-9 prim">
 			<div>
-				<p> ID: <?= $row["user_id"] ?></p><br>
-				<p> Name: <?= $row["r_name"] ?></p><br>
-				<p> Affiliation: <?= $row["affiliation"] ?></p><br>
-				<p> Review Comment: <?= $row["comments"] ?></p><br>
+			<p> ID: <?= $row["user_id"] ?></p><br>
+			<p> Name: <?= $row["r_name"] ?></p><br>
+			<p> Affiliation: <?= $row["affiliation"] ?></p><br>
+			<p> Review Comment: <?= $row["comments"] ?></p><br>
 			</div>
 	<?php			
 			$result = $conn->query($get_review_answers);
@@ -62,9 +53,7 @@
 			window.history.back();
 		}
 		</script>
+	<button onclick="goBack()">Go Back</button>
 	Thank you
-	<br>
-	<button class="but" onclick="goBack()">Go Back</button>
-	</div>
 	 </body>
 </html>

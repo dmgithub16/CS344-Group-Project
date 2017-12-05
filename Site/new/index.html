@@ -3,18 +3,28 @@
   <head>
     <title>Green Fee: Login</title>
     <meta charset="utf-8">
-    <meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
+    <meta name="author" content="Chung Ming Cheng, Derek Morgan, Matthew Dill, Jordan Benson">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+	<link rel="stylesheet" href="css\bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="css\style.css" type="text/css"> 
   </head>
   <body>
-	<div><h1>Please enter your login I.D. to start a review.</h1></div>
-	<div id="login">
-		<form action="info.php" method="POST">
-			<label>User ID: <input type="text" name="username" required></label><br>
-			<label>Password: <input type="text" name="password"></label><br>
-			<input type="submit" value="OK">
-		</form>
+  <nav class= "col-2">
+  <img class="logo" src="images/logo.png" alt="A logo for the green fee" title="green fee logo" width="150" height ="195">
+  </nav>
+	<div class = "col-9" id="topmarg">
+	<h1> Winona State</h1>
+	<h5 class ="rev" > Green Fee Review </h5>
+	<hr>
+	<div class="col-9 prim">
+		<h2>Please enter your login I.D. to start a review.</h2>
+		<div class="marg">
+			<form action="info.php" method="POST">
+				<label>User ID: <input type="text" class="box" name="username" required></label><br>
+				<label>Password: <input type="text" class="box" name="password"></label><br>
+				<input class="but" type="submit" value="OK">
+			</form>
+		</div>
 	</div>
   </body>
 </html>

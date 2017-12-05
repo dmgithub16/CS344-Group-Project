@@ -3,19 +3,12 @@
   <head>
     <title>Green Fee: Reviewer Info</title>
     <meta charset="utf-8">
-	<meta name="author" content="Chung Ming Cheng, Derek Morgan, Matthew Dill, Jordan Benson">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	<link rel="stylesheet" href="css\bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="css\style.css" type="text/css">
+	<meta name="author" content="Chung Ming Cheng, Derek Morgan, Mathew Dill, Jordan Benson">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
   </head>
   <body>
-   <nav class= "col-2">
-  <img class="logo" src="images/logo.png" alt="A logo for the green fee" title="green fee logo" width="150" height ="195">
-  </nav>
-	<div class = "col-9" id="topmarg">
-	<h1> Winona State</h1>
-	<h5 class ="rev" > Green Fee Review </h5>
-	<hr>
+  <div><h1>Review your info and select a project.</h1></div>
   <?php
   $UID = $_POST["username"];
   $servername = "localhost";
@@ -28,9 +21,9 @@
   $get_projectIDs_query = "SELECT * FROM `project` WHERE `id` NOT IN (SELECT `project_id` FROM `review` WHERE `user_id` = '$UID')";
   
 ?>
-	<div id = "info" class = "col-9 marg prim">
+	<div id="info">
 		<form action="review.php" method="POST">
-			<h2>Please select a project to review:</h2>
+			Please select a project to review:
 			<select name="projnum">
 				<?php
 					$result = $conn->query($get_projectIDs_query);
@@ -38,7 +31,7 @@
 							echo "<option value=".$row["id"].">".$row["title"]."</option>";
 					}	
 				?>
-			</select><br><br>
+			</select><br>
 			
 			<?php
 				$result = $conn->query($get_user_info_query);
@@ -49,13 +42,12 @@
 			<p>Name: <input name="name" value="<?= "$row[u_name]" ?>" readonly></p><br>
 			<p>Affiliation: <input name="affil" value="<?= "$row[campus_affiliation]" ?>" readonly></p><br>
 			<p>Phone: <input name="phone" value="<?= "$row[phone_primary]" ?>" readonly></p><br>
-			<input class="but" type="submit" value="Continue">
+			<input type="submit" value="Continue">
 			
 			<?php 
 				$conn->close(); 
 			?>
 		</form>
-	</div>
 	</div>
   </body>
 </html>
